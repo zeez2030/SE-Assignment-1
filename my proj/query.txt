@@ -1,0 +1,4 @@
+SELECT students.name ,courses.name ,(100* grades.degree / courses.max_degree ) as score ,grades.examine_at from grades
+join students on students.id = grades.student_id
+join courses on courses.id = grades.course_id
+order by students.name;
