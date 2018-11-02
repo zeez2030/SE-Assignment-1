@@ -53,6 +53,10 @@
           public function delete($id){
             $query = "delete from grades where id = $id";
             $result = $this->db->create($query);
+            $query="alter table grades drop column id";
+    				$result = $this->db->create($query);
+    				$query="alter table grades add id int not null auto_increment primary key";
+    				$result = $this->db->create($query);
           }
 
         }

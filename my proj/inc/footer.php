@@ -1,6 +1,6 @@
 
-<footer class="footer fixed-bottom bg-dark ">
-     <div class="container">
+<footer class="footer fixed-bottom bg-dark mt-5">
+     <div class="container ">
        <span class="text-muted">Place sticky footer content here.</span>
      </div>
    </footer>

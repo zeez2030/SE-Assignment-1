@@ -1,24 +1,22 @@
 <?php
-       //include 'datab.php';
-      //include 'std.php';
-      //include 'viewuser.php';
-      //include'inccc/config.php';
+
       include 'inccc/database.php';
       include_once('./inc/header.php');
       $id = $_GET['id'];
  	    $db=new Database();
 
     $query = "SELECT students.name, courses.name as course,
-              grades.degree, courses.max_degree
+              (100* grades.degree / courses.max_degree) as score,
+              courses.id
               FROM grades
               JOIN students ON students.id =$id
               JOIN courses ON courses.id = grades.course_id AND grades.student_id=$id
-              ORDER BY students.name, courses.name  ";
+              ORDER BY courses.id";
 
     $posts = $db->select($query);
-    
 
-    //$row = $posts->fetch_assoc();
+
+    ;
  ?>
 
 
@@ -36,9 +34,9 @@
   <?php while ($row = $posts->fetch_assoc()) : ?>
   <tbody>
     <tr>
-      <th scope="row"><?php echo $id; ?> </th>
+      <th scope="row"><?php echo $row['id']; ?> </th>
       <td> <?php echo $row['course']; ?> </td>
-      <td> <?php echo $row['degree']; ?> </td>
+      <td> <?php echo $row['score']; ?> </td>
 
     </tr>
   </tbody>

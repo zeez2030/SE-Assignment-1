@@ -34,6 +34,11 @@
 			public function delete($id){
 				$query = "delete from students where id = $id";
 				$result = $this->db->create($query);
+				$query="alter table students drop column id";
+				$result = $this->db->create($query);
+				$query="alter table students add id int not null auto_increment primary key";
+				$result = $this->db->create($query);
+
 			}
 
 		}

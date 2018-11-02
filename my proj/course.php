@@ -50,8 +50,8 @@
             <td> <span class="h4 text-dark my-3"> <?php echo $std['name'] ?> </span> </td>
             <td> <span class="h4 text-dark my-3"> <?php echo $std['max_degree'] ?> </span> </td>
             <td> <span class="h4 text-dark my-3"> <?php echo $std['study_year'] ?> </span> </td>
-            <td><a href="cinfo.php?id=<?php echo $std["id"]; ?>" class="btn btn-primary mr-3 mb-1">Info</a>
-            <a href="" class="btn btn-danger mb-1 delete" id="<?php echo $std["id"]; ?>">Delete</a></td>
+            <td><a href="cinfo.php?id=<?php echo $std["id"]; ?>" class="btn btn-primary mr-3 mb-3">Info</a>
+            <a href="" class="btn btn-danger mb-3 delete" id="<?php echo $std["id"]; ?>">Delete</a></td>
           </tr>
         </tbody>
       <?php endforeach; ?>
@@ -62,19 +62,15 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-          $(".delete").click(function(){
-            var anchor = $(this);
-            var id = anchor.attr('id');
-            var xmh = new XMLHttpRequest();
-            xmh.open("GET" , 'inccc/deletecourse.php?id='+id ,true);
-            xmh.send();
-            xmh.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-    						$(this).remove();
-           }
-         }
-          });
-        });
+    $(document).ready(function(){
+      $(".delete").click(function(){
+        var anchor = $(this);
+        var id = anchor.attr('id');
+        var xmh = new XMLHttpRequest();
+        xmh.open("GET" , 'inccc/deletecourse.php?id='+id ,false);
+        xmh.send();
+      });
+
+    });
     </script>
  <?php include_once('./inc/footer.php'); ?>

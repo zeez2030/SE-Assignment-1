@@ -36,9 +36,8 @@
       <tr>
         <td scope="row"><?php echo $std['id']; ?></td>
         <td> <span class="h4 text-dark my-3"> <?php echo $std['name'] ?> </span> </td>
-        <td><a href="info.php?id=<?php echo $std["id"]; ?>" class="btn btn-primary mr-3 mb-1">Info</a>
-        <a href="" class="btn btn-danger mb-1 delete" id="<?php echo $std["id"]; ?>">Delete</a></td>
-
+        <td><a href="info.php?id=<?php echo $std["id"]; ?>" class="btn btn-primary mr-3 mb-3">Info</a>
+        <a href="" class="btn btn-danger mb-3 delete" id="<?php echo $std["id"]; ?>">Delete</a></td>
       </tr>
     </tbody>
   <?php endforeach; ?>
@@ -54,18 +53,12 @@
         var anchor = $(this);
         var id = anchor.attr('id');
         var xmh = new XMLHttpRequest();
-        xmh.open("GET" , 'inccc/delete.php?id='+id ,true);
+        xmh.open("GET" , 'inccc/delete.php?id='+id ,false);
         xmh.send();
-        xmh.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-
-						$(this).remove();
-       }
-     }
       });
 
-
     });
+
 </script>
 
 <?php include_once('./inc/footer.php'); ?>

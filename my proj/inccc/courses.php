@@ -36,6 +36,10 @@
           public function delete($id){
             $query = "delete from courses where id = $id";
             $result = $this->db->create($query);
+            $query="alter table courses drop column id";
+    				$result = $this->db->create($query);
+    				$query="alter table courses add id int not null auto_increment primary key";
+    				$result = $this->db->create($query);
           }
           public function getc($id){
             $query="Select *  from  courses where id=$id ";
